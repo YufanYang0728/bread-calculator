@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f1e7" />
+  <title>Bread Calculator</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="card hero">
+      <div>
+        <p class="eyebrow">BAKERY TOOL</p>
+        <h1>🥖 Bread Calculator</h1>
+        <p class="sub">输入任意一种材料重量，自动按原配方比例计算整批用量。</p>
+      </div>
+      <button id="resetBtn" class="ghost-btn" type="button">重置</button>
+    </section>
+
+    <section class="card controls">
+      <label for="ingredientSelect">按哪一种材料计算</label>
+      <select id="ingredientSelect"></select>
+
+      <label for="amountInput">输入重量</label>
+      <div class="input-row">
+        <input id="amountInput" type="number" inputmode="decimal" min="0" step="any" placeholder="例如 4000" />
+        <select id="unitSelect" aria-label="单位">
+          <option value="g">g</option>
+          <option value="kg">kg</option>
+        </select>
+      </div>
+
+      <div class="stats">
+        <div>
+          <span>倍率</span>
+          <strong id="scaleValue">×1.000</strong>
+        </div>
+        <div>
+          <span>总重量</span>
+          <strong id="totalValue">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>配方结果</h2>
+        <span>基础配方：6000g 面粉</span>
+      </div>
+      <div id="results" class="results"></div>
+    </section>
+
+    <section class="card note">
+      <strong>加水提示</strong>
+      <p>Warm Water 会自动分成两次：第一次 80%，第二次 20%。</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

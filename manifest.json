@@ -1,0 +1,9 @@
+{
+  "name": "Bread Calculator",
+  "short_name": "Bread Calc",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f1e7",
+  "theme_color": "#f6f1e7",
+  "description": "Bread recipe scaling calculator"
+}
