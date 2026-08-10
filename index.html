@@ -1,63 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#f6f1e7" />
-  <title>Bread Calculator</title>
-  <link rel="manifest" href="manifest.json" />
+  <title>Bakery Tools</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <main class="app-shell">
-    <section class="card hero">
-      <div>
-        <p class="eyebrow">BAKERY TOOL</p>
-        <h1>🥖 Bread Calculator</h1>
-        <p class="sub">输入任意一种材料重量，自动按原配方比例计算整批用量。</p>
-      </div>
-      <button id="resetBtn" class="ghost-btn" type="button">重置</button>
-    </section>
+  <header class="topbar">
+    <div class="brand" data-nav="recipes"><div class="brand-mark">🥖</div><div><div class="brand-title">Bakery Tools</div><div class="brand-subtitle">Recipe & Calculator</div></div></div>
+    <button class="menu-btn" id="menuBtn" aria-label="打开导航">☰</button>
+    <nav class="nav" id="mainNav">
+      <button class="nav-link active" data-nav="recipes">配方 Recipes</button>
+      <button class="nav-link" data-nav="calculator">计算器 Calculator</button>
+    </nav>
+  </header>
 
-    <section class="card controls">
-      <label for="ingredientSelect">按哪一种材料计算</label>
-      <select id="ingredientSelect"></select>
-
-      <label for="amountInput">输入重量</label>
-      <div class="input-row">
-        <input id="amountInput" type="number" inputmode="decimal" min="0" step="any" placeholder="例如 4000" />
-        <select id="unitSelect" aria-label="单位">
-          <option value="g">g</option>
-          <option value="kg">kg</option>
-        </select>
+  <main class="page-shell">
+    <section id="recipes" class="page-section active">
+      <div class="hero"><span class="eyebrow">SECTION 1 · RECIPES</span><h1>配方与制作流程</h1><p>用于厨房现场快速查看标准操作步骤和基础配方。</p></div>
+      <div class="recipe-tabs">
+        <button class="recipe-tab active" data-recipe-page="focaccia-method">01 福卡恰 · 面团制作</button>
+        <button class="recipe-tab" data-recipe-page="focaccia-formula">02 福卡恰 · 基础配方</button>
       </div>
 
-      <div class="stats">
-        <div>
-          <span>倍率</span>
-          <strong id="scaleValue">×1.000</strong>
+      <article id="focaccia-method" class="recipe-page active">
+        <div class="content-card">
+          <div class="card-heading"><div><span class="pill">Focaccia</span><h2>福卡恰面包面团制作</h2></div><button class="print-btn" onclick="window.print()">打印 / Print</button></div>
+          <div class="notice"><strong>加水方式：</strong>总水量分两次加入——第一次 80%，第二次 20%。</div>
+          <ol class="steps">
+            <li><div class="step-number">1</div><div class="step-body"><h3>土豆泥 + 第一次加水（80%）</h3><p>直接在和面机的桶里加入土豆泥。接着加入总水量 <strong>80% 的温水</strong>，让冷冻土豆泥与温水充分混合，同时把结块的土豆泥充分打散。</p><div class="step-note">检查重点：不能留下明显的大块冷冻土豆泥。</div></div></li>
+            <li><div class="step-number">2</div><div class="step-body"><h3>加入面粉</h3><p>将称量好的面粉加入和面机桶内，均匀覆盖土豆泥和水的混合物。</p></div></li>
+            <li><div class="step-number">3</div><div class="step-body"><h3>加入酵母、糖和盐</h3><p>用盘称好酵母、糖和盐，再将它们<strong>均匀平铺在面粉表面</strong>，避免集中堆在同一个位置。</p></div></li>
+            <li><div class="step-number">4</div><div class="step-body"><h3>第二次加水（20%）+ 油</h3><p>称好所需的油。打开和面机，在搅拌过程中将剩余 <strong>20% 的水</strong>缓慢加入，再缓缓加入油，让面团逐步吸收。</p><div class="step-note">不要一次性快速倒入，尽量让液体被面团稳定吸收。</div></div></li>
+            <li><div class="step-number">5</div><div class="step-body"><h3>辅助翻动并检查混合状态</h3><p>搅拌过程中根据面团状态手动辅助翻动，让面团充分混合。翻动时<strong>不要用力扯断面筋</strong>。</p><ul class="check-list"><li>观察是否仍有结块面团。</li><li>观察桶内是否有干燥、未混合的面粉或面团。</li><li>继续搅拌至整体充分、均匀混合。</li></ul></div></li>
+            <li><div class="step-number">6</div><div class="step-body"><h3>第一次发酵</h3><p>搅拌完成后盖上油纸，静置发酵 <strong>30 分钟</strong>。</p></div></li>
+            <li><div class="step-number">7</div><div class="step-body"><h3>准备分装袋</h3><p>准备大号透明塑料袋，并在塑料袋底部均匀喷油，防止面团粘连。</p></div></li>
+            <li><div class="step-number">8</div><div class="step-body"><h3>分装</h3><p>将发酵完成的面团按生产要求进行分装，并放入已经喷油的大透明塑料袋中。</p></div></li>
+          </ol>
         </div>
-        <div>
-          <span>总重量</span>
-          <strong id="totalValue">—</strong>
+      </article>
+
+      <article id="focaccia-formula" class="recipe-page">
+        <div class="content-card">
+          <div class="card-heading"><div><span class="pill">Base Formula</span><h2>福卡恰基础配方</h2></div><button class="jump-calc" data-nav="calculator">打开计算器 →</button></div>
+          <div class="formula-grid">
+            <div class="formula-row formula-head"><span>原料</span><span>基础重量</span><span>烘焙百分比</span></div>
+            <div class="formula-row"><span>Bread Flour 面粉</span><strong>6000 g</strong><span>100%</span></div>
+            <div class="formula-row"><span>Sugar 糖</span><strong>290 g</strong><span>4.83%</span></div>
+            <div class="formula-row"><span>Salt 盐</span><strong>136 g</strong><span>2.27%</span></div>
+            <div class="formula-row"><span>Yeast 酵母</span><strong>60 g</strong><span>1.00%</span></div>
+            <div class="formula-row accent-row"><span>Warm Water 总水量</span><strong>3700 g</strong><span>61.67%</span></div>
+            <div class="formula-row sub-row"><span>↳ First Water 第一次 80%</span><strong>2960 g</strong><span>49.33%</span></div>
+            <div class="formula-row sub-row"><span>↳ Second Water 第二次 20%</span><strong>740 g</strong><span>12.33%</span></div>
+            <div class="formula-row"><span>Oil 油</span><strong>360 g</strong><span>6.00%</span></div>
+            <div class="formula-row"><span>Hash Potato 土豆泥</span><strong>2600 g</strong><span>43.33%</span></div>
+          </div>
+          <div class="formula-summary"><div><span>基础总重量</span><strong>13,146 g</strong></div><div><span>水量拆分</span><strong>80% + 20%</strong></div></div>
+          <p class="muted-text">计算器会保持所有原料比例不变，并允许以任意一种原料作为目标重量进行换算。</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="calculator" class="page-section">
+      <div class="hero"><span class="eyebrow">SECTION 2 · CALCULATOR</span><h1>配比计算器</h1><p>选择任意一种原料并输入目标重量，其余用量会自动按原配方比例换算。</p></div>
+      <div class="calculator-layout">
+        <div class="content-card calculator-panel">
+          <h2>输入目标重量</h2>
+          <label for="ingredientSelect">选择作为基准的原料</label>
+          <select id="ingredientSelect"><option value="flour">Bread Flour 面粉</option><option value="sugar">Sugar 糖</option><option value="salt">Salt 盐</option><option value="yeast">Yeast 酵母</option><option value="water">Warm Water 总水量</option><option value="oil">Oil 油</option><option value="potato">Hash Potato 土豆泥</option></select>
+          <label for="targetWeight">目标重量</label>
+          <div class="weight-input-wrap"><input id="targetWeight" type="number" inputmode="decimal" min="0" step="1" placeholder="例如：4000" /><select id="unitSelect"><option value="g">g</option><option value="kg">kg</option></select></div>
+          <div class="quick-buttons"><button data-quick="1000">1000 g</button><button data-quick="2000">2000 g</button><button data-quick="4000">4000 g</button><button data-quick="6000">6000 g</button></div>
+          <div class="action-row"><button id="calculateBtn" class="primary-btn">计算 Calculate</button><button id="resetBtn" class="secondary-btn">重置 Reset</button></div>
+          <div id="calcMessage" class="calc-message">请输入重量开始计算。</div>
+        </div>
+        <div class="content-card results-panel">
+          <div class="results-heading"><h2>计算结果</h2><div class="multiplier">倍率 <strong id="multiplier">×1.000</strong></div></div>
+          <div class="results-list">
+            <div class="result-row"><span>Bread Flour <small>面粉</small></span><strong id="out-flour">6000 g</strong></div>
+            <div class="result-row"><span>Sugar <small>糖</small></span><strong id="out-sugar">290 g</strong></div>
+            <div class="result-row"><span>Salt <small>盐</small></span><strong id="out-salt">136 g</strong></div>
+            <div class="result-row"><span>Yeast <small>酵母</small></span><strong id="out-yeast">60 g</strong></div>
+            <div class="water-block"><div class="result-row main-water"><span>Warm Water <small>总水量</small></span><strong id="out-water">3700 g</strong></div><div class="water-split"><div><span>第一次加水 · 80%</span><strong id="out-water80">2960 g</strong></div><div><span>第二次加水 · 20%</span><strong id="out-water20">740 g</strong></div></div></div>
+            <div class="result-row"><span>Oil <small>油</small></span><strong id="out-oil">360 g</strong></div>
+            <div class="result-row"><span>Hash Potato <small>土豆泥</small></span><strong id="out-potato">2600 g</strong></div>
+          </div>
+          <div class="total-box"><span>总面团重量</span><strong id="totalWeight">13,146 g</strong></div>
         </div>
       </div>
-    </section>
-
-    <section class="card">
-      <div class="section-title">
-        <h2>配方结果</h2>
-        <span>基础配方：6000g 面粉</span>
-      </div>
-      <div id="results" class="results"></div>
-    </section>
-
-    <section class="card note">
-      <strong>加水提示</strong>
-      <p>Warm Water 会自动分成两次：第一次 80%，第二次 20%。</p>
     </section>
   </main>
-
+  <footer><span>Bakery Tools</span><span>·</span><span>Focaccia Production Helper</span></footer>
   <script src="script.js"></script>
 </body>
 </html>
