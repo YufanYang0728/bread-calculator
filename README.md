@@ -1,18 +1,12 @@
 # Bakery Tools
 
-Current release: **v20260811-0102**
+Current release: **v20260811-2330**
 
-## Files
-- `index.html`
-- `style-20260811-0102.css`
-- `script-20260811-0102.js`
-- `manifest.json`
+新增：
+- 兔子慕斯制作流程
+- Step 5 打发奶油参考图片
+- 40°C 以下混合提示
 
-The CSS and JavaScript filenames include the release version to avoid stale browser caches on GitHub Pages.
+上传时请保留 `assets` 文件夹。
 
-## Upload
-Upload all files to the repository root, replacing the old `index.html`.
-You may delete older `style*.css` / `script*.js` files after confirming the new page works.
-
-GitHub Pages:
-Settings → Pages → Deploy from a branch → `main` → `/(root)`.
+GitHub Pages：Settings → Pages → Deploy from a branch → main → /(root)
