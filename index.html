@@ -9,8 +9,8 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Bakery Tools</title>
-  <link rel="stylesheet" href="style-20260811-2330.css">
-  <link rel="manifest" href="manifest.json?v=20260811-2330">
+  <link rel="stylesheet" href="style-20260812-2220.css">
+  <link rel="manifest" href="manifest.json?v=20260812-2220">
 </head>
 <body>
   <header class="site-header">
@@ -48,7 +48,7 @@
 
       <div class="subnav" role="tablist" aria-label="福卡恰页面">
         <button type="button" class="subnav-btn active" data-recipe-page="focaccia-method">01 福卡恰 · 面团制作</button>
-        <button type="button" class="subnav-btn" data-recipe-page="focaccia-formula">02 福卡恰 · 基础配方</button>
+        <button type="button" class="subnav-btn" data-recipe-page="almond-cream">02 Almond Cream · 制作流程</button>
         <button type="button" class="subnav-btn" data-recipe-page="rabbit-mousse">03 兔子慕斯 · 制作流程</button>
       </div>
 
@@ -146,36 +146,83 @@
         </div>
       </article>
 
-      <article id="focaccia-formula" class="recipe-page">
+
+      <article id="almond-cream" class="recipe-page">
         <div class="panel">
           <div class="panel-head">
             <div>
-              <span class="tag">Base Formula</span>
-              <h2>福卡恰基础配方</h2>
-              <p class="panel-intro">以下为当前基础批次。计算器会保持所有材料比例不变。</p>
+              <span class="tag">Almond Cream</span>
+              <h2>Almond Cream 制作流程</h2>
+              <p class="panel-intro">先将黄油和砂糖充分搅拌，再加入鸡蛋和香草，最后分次加入混合粉类。</p>
             </div>
-            <button type="button" class="outline-btn" data-nav="calculator">打开计算器 →</button>
+            <button type="button" class="outline-btn almond-calc-jump" data-nav="calculator">打开 Almond Cream 计算器 →</button>
           </div>
 
-          <div class="formula-table">
-            <div class="formula-row formula-header">
-              <span>原料</span><span>基础重量</span><span>烘焙百分比</span>
+          <div class="butter-banner">
+            <span class="butter-icon">🧈</span>
+            <div>
+              <strong>黄油温度注意</strong>
+              <p>必须使用<strong>室温黄油</strong>。如果是冷藏黄油，需要先用微波炉适当加热软化，再开始搅拌。</p>
             </div>
-            <div class="formula-row"><span>Bread Flour <small>面粉</small></span><strong>6000 g</strong><span>100%</span></div>
-            <div class="formula-row"><span>Sugar <small>糖</small></span><strong>290 g</strong><span>4.83%</span></div>
-            <div class="formula-row"><span>Salt <small>盐</small></span><strong>136 g</strong><span>2.27%</span></div>
-            <div class="formula-row"><span>Yeast <small>酵母</small></span><strong>60 g</strong><span>1.00%</span></div>
-            <div class="formula-row water-total"><span>Warm Water <small>总水量</small></span><strong>3700 g</strong><span>61.67%</span></div>
-            <div class="formula-row water-sub"><span>↳ First Water <small>第一次 80%</small></span><strong>2960 g</strong><span>49.33%</span></div>
-            <div class="formula-row water-sub"><span>↳ Second Water <small>第二次 20%</small></span><strong>740 g</strong><span>12.33%</span></div>
-            <div class="formula-row"><span>Oil <small>油</small></span><strong>360 g</strong><span>6.00%</span></div>
-            <div class="formula-row"><span>Hash Potato <small>土豆泥</small></span><strong>2600 g</strong><span>43.33%</span></div>
           </div>
 
-          <div class="summary-grid">
-            <div class="summary-box"><span>基础总重量</span><strong>13,146 g</strong></div>
-            <div class="summary-box"><span>水量拆分</span><strong>80% + 20%</strong></div>
+          <div class="formula-table almond-formula">
+            <div class="formula-row formula-header"><span>原料</span><span>基础用量</span><span>备注</span></div>
+            <div class="formula-row"><span>Butter <small>黄油</small></span><strong>1.5 kg</strong><span>1500 g</span></div>
+            <div class="formula-row"><span>Sugar <small>白糖</small></span><strong>1.125 kg</strong><span>1125 g</span></div>
+            <div class="formula-row"><span>Vanilla Essence <small>香草香精</small></span><strong>1 spoon</strong><span>随鸡蛋加入</span></div>
+            <div class="formula-row egg-highlight"><span>Eggs <small>鸡蛋</small></span><strong>20 units</strong><span>总重约 1200 g</span></div>
+            <div class="formula-row egg-sub"><span>↳ Egg White <small>蛋白</small></span><strong>700 g</strong><span>35 g × 20</span></div>
+            <div class="formula-row egg-sub"><span>↳ Egg Yolk <small>蛋黄</small></span><strong>500 g</strong><span>25 g × 20</span></div>
+            <div class="formula-row"><span>Almond Meal <small>杏仁粉</small></span><strong>1.665 kg</strong><span>1665 g</span></div>
+            <div class="formula-row"><span>Cornflour <small>玉米淀粉</small></span><strong>250 g</strong><span></span></div>
+            <div class="formula-row"><span>Plain Flour <small>普通面粉</small></span><strong>500 g</strong><span></span></div>
+            <div class="formula-row"><span>Baking Powder <small>泡打粉</small></span><strong>30 g</strong><span></span></div>
           </div>
+
+          <ol class="steps almond-steps">
+            <li class="step-card"><div class="step-no">01</div><div class="step-content">
+              <h3>称量黄油和白糖</h3>
+              <p>根据配料表称出黄油和白糖，加入搅拌缸中开始搅拌。</p>
+              <div class="check-note"><strong>黄油要求：</strong>使用室温黄油；冷藏黄油需要先用微波炉适当软化。</div>
+            </div></li>
+
+            <li class="step-card"><div class="step-no">02</div><div class="step-content">
+              <h3>搅拌至看不见砂糖</h3>
+              <p>持续搅拌黄油和白糖，直到肉眼基本看不见明显的砂糖颗粒。</p>
+            </div></li>
+
+            <li class="step-card"><div class="step-no">03</div><div class="step-content">
+              <h3>翻动底部黄油</h3>
+              <p>搅拌过程中需要手动翻动搅拌缸底部的黄油，避免整块黄油停留在底部而没有充分混合。</p>
+            </div></li>
+
+            <li class="step-card"><div class="step-no">04</div><div class="step-content">
+              <h3>加入鸡蛋和香草香精</h3>
+              <p>称出所需鸡蛋，加入 <strong>1 勺香草香精</strong>，一起加入搅拌缸中继续搅拌，直到看不见明显的大块蛋黄。</p>
+            </div></li>
+
+            <li class="step-card"><div class="step-no">05</div><div class="step-content">
+              <h3>称量并混合粉类</h3>
+              <p>称出 <strong>Almond Meal、Cornflour、Plain Flour 和 Baking Powder</strong>，先在容器中充分混合均匀。</p>
+            </div></li>
+
+            <li class="step-card"><div class="step-no">06</div><div class="step-content">
+              <h3>分次加入粉类</h3>
+              <p>将混合好的粉类<strong>分次加入</strong>搅拌缸，每次加入后继续搅拌。</p>
+              <div class="dust-note"><strong>注意：</strong>不要一次倒入全部粉类，以减少粉尘飞扬。</div>
+            </div></li>
+
+            <li class="step-card"><div class="step-no">07</div><div class="step-content">
+              <h3>搅拌至充分混合</h3>
+              <p>继续搅拌，直至所有材料均匀混合，确认没有明显未混合的粉块、蛋黄块或黄油块。</p>
+            </div></li>
+
+            <li class="step-card"><div class="step-no">08</div><div class="step-content">
+              <h3>装桶、封膜并冷藏</h3>
+              <p>将完成的 Almond Cream 装入桶中，基础配方大约可装 <strong>1.5 桶</strong>。封上保鲜膜后放入 <strong>Cool Room</strong> 冷藏保存。</p>
+            </div></li>
+          </ol>
         </div>
       </article>
 
@@ -224,7 +271,7 @@
               <h3>打发奶油</h3>
               <p>取搅拌机的桶，称好需要打发的奶油量并开始打发。打发至<strong>搅拌头经过后能够留下清晰痕迹</strong>的程度。</p>
               <figure class="process-photo">
-                <img src="assets/rabbit-mousse-whipped-cream.jpg?v=20260811-2330" alt="打发奶油达到搅拌头能够留下清晰痕迹的参考状态">
+                <img src="assets/rabbit-mousse-whipped-cream.jpg?v=20260812-2220" alt="打发奶油达到搅拌头能够留下清晰痕迹的参考状态">
                 <figcaption>参考状态：搅拌头经过奶油后能够留下清晰、稳定的纹路。</figcaption>
               </figure>
             </div></li>
@@ -251,71 +298,101 @@
           <div class="section-kicker">SECTION 2 · CALCULATOR</div>
           <h1>配比计算器</h1>
         </div>
-        <p>选择任意一种原料作为基准并输入目标重量，其余用量会自动按比例换算。</p>
+        <p>选择配方，再以任意一种主要原料作为基准进行比例换算。</p>
       </header>
 
-      <div class="calculator-grid">
-        <div class="panel input-panel">
-          <h2>输入目标重量</h2>
+      <div class="calculator-tabs">
+        <button type="button" class="calc-tab active" data-calculator="focaccia-calculator">福卡恰 Focaccia</button>
+        <button type="button" class="calc-tab" data-calculator="almond-calculator">Almond Cream</button>
+      </div>
 
-          <label for="ingredientSelect">基准原料</label>
-          <select id="ingredientSelect">
-            <option value="flour">Bread Flour 面粉</option>
-            <option value="sugar">Sugar 糖</option>
-            <option value="salt">Salt 盐</option>
-            <option value="yeast">Yeast 酵母</option>
-            <option value="water">Warm Water 总水量</option>
-            <option value="oil">Oil 油</option>
-            <option value="potato">Hash Potato 土豆泥</option>
-          </select>
-
-          <label for="targetWeight">目标重量</label>
-          <div class="weight-row">
-            <input id="targetWeight" type="number" inputmode="decimal" min="0" step="1" placeholder="例如：4000">
-            <select id="unitSelect" aria-label="单位"><option value="g">g</option><option value="kg">kg</option></select>
-          </div>
-
-          <div class="quick-row" aria-label="快速重量">
-            <button type="button" data-quick="1000">1000 g</button>
-            <button type="button" data-quick="2000">2000 g</button>
-            <button type="button" data-quick="4000">4000 g</button>
-            <button type="button" data-quick="6000">6000 g</button>
-          </div>
-
-          <div class="action-row">
-            <button id="calculateBtn" type="button" class="primary-btn">计算 Calculate</button>
-            <button id="resetBtn" type="button" class="secondary-btn">重置 Reset</button>
-          </div>
-          <p id="calcMessage" class="calc-message">请输入重量开始计算。</p>
-        </div>
-
-        <div class="panel result-panel">
-          <div class="result-head">
-            <h2>计算结果</h2>
-            <span class="multiplier">倍率 <strong id="multiplier">×1.000</strong></span>
-          </div>
-
-          <div class="results">
-            <div class="result-row"><span>Bread Flour <small>面粉</small></span><strong id="out-flour">6000 g</strong></div>
-            <div class="result-row"><span>Sugar <small>糖</small></span><strong id="out-sugar">290 g</strong></div>
-            <div class="result-row"><span>Salt <small>盐</small></span><strong id="out-salt">136 g</strong></div>
-            <div class="result-row"><span>Yeast <small>酵母</small></span><strong id="out-yeast">60 g</strong></div>
-
-            <div class="water-result">
-              <div class="result-row water-main"><span>Warm Water <small>总水量</small></span><strong id="out-water">3700 g</strong></div>
-              <div class="water-parts">
-                <div><span>第一次加水 · 80%</span><strong id="out-water80">2960 g</strong></div>
-                <div><span>第二次加水 · 20%</span><strong id="out-water20">740 g</strong></div>
-              </div>
+      <div id="focaccia-calculator" class="calculator-page active">
+        <div class="calculator-grid">
+          <div class="panel input-panel">
+            <span class="tag">Focaccia</span>
+            <h2>输入目标重量</h2>
+            <label for="ingredientSelect">基准原料</label>
+            <select id="ingredientSelect">
+              <option value="flour">Bread Flour 面粉</option><option value="sugar">Sugar 糖</option>
+              <option value="salt">Salt 盐</option><option value="yeast">Yeast 酵母</option>
+              <option value="water">Warm Water 总水量</option><option value="oil">Oil 油</option>
+              <option value="potato">Hash Potato 土豆泥</option>
+            </select>
+            <label for="targetWeight">目标重量</label>
+            <div class="weight-row">
+              <input id="targetWeight" type="number" inputmode="decimal" min="0" step="1" placeholder="例如：4000">
+              <select id="unitSelect"><option value="g">g</option><option value="kg">kg</option></select>
             </div>
-
-            <div class="result-row"><span>Oil <small>油</small></span><strong id="out-oil">360 g</strong></div>
-            <div class="result-row"><span>Hash Potato <small>土豆泥</small></span><strong id="out-potato">2600 g</strong></div>
+            <div class="quick-row">
+              <button type="button" data-quick="1000">1000 g</button><button type="button" data-quick="2000">2000 g</button>
+              <button type="button" data-quick="4000">4000 g</button><button type="button" data-quick="6000">6000 g</button>
+            </div>
+            <div class="action-row">
+              <button id="calculateBtn" type="button" class="primary-btn">计算 Calculate</button>
+              <button id="resetBtn" type="button" class="secondary-btn">重置 Reset</button>
+            </div>
+            <p id="calcMessage" class="calc-message">请输入重量开始计算。</p>
           </div>
 
-          <div class="total">
-            <span>总面团重量</span>
-            <strong id="totalWeight">13,146 g</strong>
+          <div class="panel result-panel">
+            <div class="result-head"><h2>计算结果</h2><span class="multiplier">倍率 <strong id="multiplier">×1.000</strong></span></div>
+            <div class="results">
+              <div class="result-row"><span>Bread Flour <small>面粉</small></span><strong id="out-flour">6000 g</strong></div>
+              <div class="result-row"><span>Sugar <small>糖</small></span><strong id="out-sugar">290 g</strong></div>
+              <div class="result-row"><span>Salt <small>盐</small></span><strong id="out-salt">136 g</strong></div>
+              <div class="result-row"><span>Yeast <small>酵母</small></span><strong id="out-yeast">60 g</strong></div>
+              <div class="water-result">
+                <div class="result-row water-main"><span>Warm Water <small>总水量</small></span><strong id="out-water">3700 g</strong></div>
+                <div class="water-parts"><div><span>第一次加水 · 80%</span><strong id="out-water80">2960 g</strong></div><div><span>第二次加水 · 20%</span><strong id="out-water20">740 g</strong></div></div>
+              </div>
+              <div class="result-row"><span>Oil <small>油</small></span><strong id="out-oil">360 g</strong></div>
+              <div class="result-row"><span>Hash Potato <small>土豆泥</small></span><strong id="out-potato">2600 g</strong></div>
+            </div>
+            <div class="total"><span>总面团重量</span><strong id="totalWeight">13,146 g</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="almond-calculator" class="calculator-page">
+        <div class="calculator-grid">
+          <div class="panel input-panel">
+            <span class="tag">Almond Cream</span>
+            <h2>输入目标用量</h2>
+            <label for="almondIngredientSelect">基准原料</label>
+            <select id="almondIngredientSelect">
+              <option value="butter">Butter 黄油</option><option value="sugar">Sugar 白糖</option>
+              <option value="eggs">Eggs 鸡蛋</option><option value="almondMeal">Almond Meal 杏仁粉</option>
+              <option value="cornflour">Cornflour 玉米淀粉</option><option value="plainFlour">Plain Flour 普通面粉</option>
+              <option value="bakingPowder">Baking Powder 泡打粉</option>
+            </select>
+            <label id="almondTargetLabel" for="almondTargetWeight">目标重量</label>
+            <div class="weight-row">
+              <input id="almondTargetWeight" type="number" inputmode="decimal" min="0" step="1" placeholder="例如：1500">
+              <select id="almondUnitSelect"><option value="g">g</option><option value="kg">kg</option></select>
+            </div>
+            <div class="action-row">
+              <button id="almondCalculateBtn" type="button" class="primary-btn">计算 Calculate</button>
+              <button id="almondResetBtn" type="button" class="secondary-btn">重置 Reset</button>
+            </div>
+            <p id="almondCalcMessage" class="calc-message">基础配方：20 个鸡蛋；每个按 35 g 蛋白 + 25 g 蛋黄计算。</p>
+          </div>
+
+          <div class="panel result-panel">
+            <div class="result-head"><h2>Almond Cream 结果</h2><span class="multiplier">倍率 <strong id="almondMultiplier">×1.000</strong></span></div>
+            <div class="results">
+              <div class="result-row"><span>Butter <small>黄油</small></span><strong id="almond-out-butter">1500 g</strong></div>
+              <div class="result-row"><span>Sugar <small>白糖</small></span><strong id="almond-out-sugar">1125 g</strong></div>
+              <div class="egg-result">
+                <div class="result-row egg-main"><span>Eggs <small>鸡蛋</small></span><strong id="almond-out-eggs">20 units · 1200 g</strong></div>
+                <div class="egg-parts"><div><span>Egg White · 蛋白</span><strong id="almond-out-white">700 g</strong></div><div><span>Egg Yolk · 蛋黄</span><strong id="almond-out-yolk">500 g</strong></div></div>
+              </div>
+              <div class="result-row"><span>Almond Meal <small>杏仁粉</small></span><strong id="almond-out-almondMeal">1665 g</strong></div>
+              <div class="result-row"><span>Cornflour <small>玉米淀粉</small></span><strong id="almond-out-cornflour">250 g</strong></div>
+              <div class="result-row"><span>Plain Flour <small>普通面粉</small></span><strong id="almond-out-plainFlour">500 g</strong></div>
+              <div class="result-row"><span>Baking Powder <small>泡打粉</small></span><strong id="almond-out-bakingPowder">30 g</strong></div>
+              <div class="result-row vanilla-row"><span>Vanilla Essence <small>香草香精</small></span><strong id="almond-out-vanilla">1 spoon</strong></div>
+            </div>
+            <div class="total almond-total"><span>已知重量总计（含鸡蛋，不含香草）</span><strong id="almondTotalWeight">6,270 g</strong></div>
           </div>
         </div>
       </div>
@@ -325,10 +402,10 @@
   <footer class="site-footer">
     <span>Bakery Tools</span>
     <span>•</span>
-    <span>Focaccia Production Helper</span>
-    <span class="version">v20260811-2330</span>
+    <span>Bakery Production Helper</span>
+    <span class="version">v20260812-2220</span>
   </footer>
 
-  <script src="script-20260811-2330.js"></script>
+  <script src="script-20260812-2220.js"></script>
 </body>
 </html>

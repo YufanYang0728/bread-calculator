@@ -1,12 +1,13 @@
 # Bakery Tools
 
-Current release: **v20260811-2330**
+Current release: **v20260812-2220**
 
-新增：
-- 兔子慕斯制作流程
-- Step 5 打发奶油参考图片
-- 40°C 以下混合提示
+- 删除：02 福卡恰 · 基础配方
+- 新增：02 Almond Cream · 制作流程
+- 保留：03 兔子慕斯 · 制作流程
+- 计算器新增 Almond Cream 配方计算器
+- 鸡蛋基准：1 egg = 35 g egg white + 25 g egg yolk = 60 g
+- 20 eggs = 1200 g total = 700 g white + 500 g yolk
+- Vanilla essence 基础为 1 spoon，并随倍率显示
 
-上传时请保留 `assets` 文件夹。
-
-GitHub Pages：Settings → Pages → Deploy from a branch → main → /(root)
+上传时将所有文件（包括 assets 文件夹）放到 GitHub repository 根目录。
