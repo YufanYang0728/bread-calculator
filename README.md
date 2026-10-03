@@ -1,27 +1,14 @@
 # Bakery Tools
 
-Current release: **v20261003-1017**
+Current release: **v20261003-1030**
 
-## New: Recipe Library
-新增独立的「03 配方库 Recipe Library」：
-- 支持名称 / 材料搜索
-- 支持 Mousse / Jelly / Ganache / Sponge 分类筛选
-- 每张配方卡可展开查看原始手写配方照片
+## Recipe Library update
+默认优先显示大剂量配方。
 
-### Added recipes
-- Pig Mousse
-- Rabbit Vanilla Mousse
-- Strawberry Jelly
-- Matcha Ganache
-- Cherry Jelly
-- Milk Chocolate Mousse · Bear
-- Mandarin Yuzu Mousse
-- Mandarin Jelly
-- Chocolate Sponge
-- Mango Mousse
-- Lychee Jelly
-- Coconut Jelly
+目前已明确有大小两个批次的配方：
+- Rabbit Vanilla Mousse：默认显示大剂量
+- Mango Mousse：默认显示大剂量
 
-> 部分手写原稿存在修改痕迹或缩写，网页中已尽量按清晰可读的最终数值整理；原图保留用于现场核对。
+小剂量仍保留在卡片下方，方便需要时对照。
 
-Upload all files and the `assets` folder to the GitHub repository root.
+其他只有一个明确剂量的配方保持原数值不变，避免擅自放大比例。
