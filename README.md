@@ -1,17 +1,27 @@
 # Bakery Tools
 
-Current release: **v20260815-0051**
+Current release: **v20261003-1017**
 
-新增：
-- 04 Vanilla Sponge · 制作流程
-- 总注意事项：打发后气泡会随时间消失，因此需提前备料并快速操作
-- 3挡打发、起缸20秒防止糖沉底
-- Gluten Free Flour + Corn Flour 过筛
-- Chocolate Sponge 额外加入 180 g CC Powder
-- 油 + 1 勺 Vanilla Puree
-- 1挡加入粉类和油，约 12 圈
-- 4 个 Tray，每个 1150–1250 g
-- 165°C / 12 min
-- 原始手写笔记参考图
+## New: Recipe Library
+新增独立的「03 配方库 Recipe Library」：
+- 支持名称 / 材料搜索
+- 支持 Mousse / Jelly / Ganache / Sponge 分类筛选
+- 每张配方卡可展开查看原始手写配方照片
 
-上传全部文件和 assets 文件夹到 GitHub repository 根目录。
+### Added recipes
+- Pig Mousse
+- Rabbit Vanilla Mousse
+- Strawberry Jelly
+- Matcha Ganache
+- Cherry Jelly
+- Milk Chocolate Mousse · Bear
+- Mandarin Yuzu Mousse
+- Mandarin Jelly
+- Chocolate Sponge
+- Mango Mousse
+- Lychee Jelly
+- Coconut Jelly
+
+> 部分手写原稿存在修改痕迹或缩写，网页中已尽量按清晰可读的最终数值整理；原图保留用于现场核对。
+
+Upload all files and the `assets` folder to the GitHub repository root.
