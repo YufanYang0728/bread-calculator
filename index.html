@@ -383,15 +383,46 @@
           <div class="section-kicker">SECTION 2 · CALCULATOR</div>
           <h1>配比计算器</h1>
         </div>
-        <p>选择配方，再以任意一种主要原料作为基准进行比例换算。</p>
+        <p>选择配方，再以任意材料或配方总重量作为基准进行比例换算。</p>
       </header>
 
       <div class="calculator-tabs">
-        <button type="button" class="calc-tab active" data-calculator="focaccia-calculator">福卡恰 Focaccia</button>
+        <button type="button" class="calc-tab active" data-calculator="library-calculator">自由配方换算</button>
+        <button type="button" class="calc-tab" data-calculator="focaccia-calculator">福卡恰 Focaccia</button>
         <button type="button" class="calc-tab" data-calculator="almond-calculator">Almond Cream</button>
       </div>
 
-      <div id="focaccia-calculator" class="calculator-page active">
+      <div id="library-calculator" class="calculator-page active">
+        <div class="calculator-grid">
+          <div class="panel input-panel">
+            <span class="tag">Recipe Calculator</span>
+            <h2>选择配方与基准</h2>
+            <label for="libraryRecipeSelect">配方</label>
+            <select id="libraryRecipeSelect"></select>
+            <label for="libraryIngredientSelect">基准材料 / 总重量</label>
+            <select id="libraryIngredientSelect"></select>
+            <p id="libraryBaseAmount" class="calc-message"></p>
+            <label for="libraryTargetWeight">目标重量</label>
+            <div class="weight-row">
+              <input id="libraryTargetWeight" type="number" inputmode="decimal" min="0" step="any" placeholder="例如：500">
+              <select id="libraryUnitSelect" aria-label="目标重量单位"><option value="g">g</option><option value="kg">kg</option></select>
+            </div>
+            <div class="action-row">
+              <button id="libraryCalculateBtn" type="button" class="primary-btn">计算 Calculate</button>
+              <button id="libraryResetBtn" type="button" class="secondary-btn">重置 Reset</button>
+            </div>
+            <p id="libraryCalcMessage" class="calc-message" role="status">请选择配方并输入目标重量。</p>
+          </div>
+          <div class="panel result-panel">
+            <div class="result-head"><h2 id="libraryResultTitle">计算结果</h2><span class="multiplier">倍率 <strong id="libraryMultiplier">×1.000</strong></span></div>
+            <div id="libraryResults" class="results"></div>
+            <div class="total"><span>配方总重量</span><strong id="libraryTotalWeight"></strong></div>
+            <p id="libraryRecipeNote" class="calc-message"></p>
+          </div>
+        </div>
+      </div>
+
+      <div id="focaccia-calculator" class="calculator-page">
         <div class="calculator-grid">
           <div class="panel input-panel">
             <span class="tag">Focaccia</span>
@@ -735,6 +766,6 @@
     <span class="version">v20261003-1415</span>
   </footer>
 
-  <script src="script-20261003-1415.js"></script>
+  <script src="script-20261003-1415.js?v=flexible-calculator-1"></script>
 </body>
 </html>

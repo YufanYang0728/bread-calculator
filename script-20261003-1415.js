@@ -72,3 +72,80 @@ filterButtons.forEach(btn => {
 });
 recipeSearch?.addEventListener("input", updateRecipeLibrary);
 updateRecipeLibrary();
+
+/* Library formulas use the same quantities displayed on each recipe card. */
+const libraryFormulas = recipeCards.map((card, index) => ({
+  id: String(index),
+  name: card.querySelector('h2').textContent.trim(),
+  ingredients: Array.from(card.querySelectorAll('.mini-formula > div'), row => {
+    const amount = row.querySelector('strong').textContent.trim().match(/^([\d,.]+)\s*g$/);
+    if (!amount) throw new Error('Unsupported recipe quantity');
+    return {name: row.querySelector('span').textContent.trim(), grams: Number(amount[1].replaceAll(',', ''))};
+  }),
+  note: [card.querySelector('.batch-priority')?.textContent, card.querySelector('.recipe-note')?.textContent].filter(Boolean).join(' · ')
+}));
+const lr = document.getElementById('libraryRecipeSelect');
+const li = document.getElementById('libraryIngredientSelect');
+const lt = document.getElementById('libraryTargetWeight');
+const lu = document.getElementById('libraryUnitSelect');
+const lm = document.getElementById('libraryCalcMessage');
+let libraryScale = 1;
+function selectedLibraryFormula(){return libraryFormulas.find(recipe => recipe.id === lr.value);}
+function libraryBaseWeight(){
+  const recipe = selectedLibraryFormula();
+  return li.value === 'total' ? recipe.ingredients.reduce((sum, item) => sum + item.grams, 0) : recipe.ingredients[Number(li.value)].grams;
+}
+function renderLibraryFormula(){
+  const recipe = selectedLibraryFormula();
+  document.getElementById('libraryResultTitle').textContent = recipe.name;
+  document.getElementById('libraryMultiplier').textContent = `×${libraryScale.toFixed(3)}`;
+  const rows = recipe.ingredients.map(item => {
+    const row = document.createElement('div'); row.className = 'result-row';
+    const name = document.createElement('span'); name.textContent = item.name;
+    const weight = document.createElement('strong');
+    weight.textContent = `${(item.grams * libraryScale / (lu.value === 'kg' ? 1000 : 1)).toLocaleString(undefined, {maximumFractionDigits: lu.value === 'kg' ? 6 : 3})} ${lu.value}`;
+    row.append(name, weight); return row;
+  });
+  document.getElementById('libraryResults').replaceChildren(...rows);
+  const total = recipe.ingredients.reduce((sum, item) => sum + item.grams, 0) * libraryScale;
+  document.getElementById('libraryTotalWeight').textContent = `${(total / (lu.value === 'kg' ? 1000 : 1)).toLocaleString(undefined, {maximumFractionDigits: lu.value === 'kg' ? 6 : 3})} ${lu.value}`;
+  document.getElementById('libraryRecipeNote').textContent = recipe.note;
+  document.getElementById('libraryBaseAmount').textContent = `原配方基准用量：${libraryBaseWeight().toLocaleString()} g`;
+}
+function calculateLibraryFormula(){
+  const target = Number(lt.value);
+  const grams = target * (lu.value === 'kg' ? 1000 : 1);
+  const scale = grams / libraryBaseWeight();
+  if (!Number.isFinite(grams) || grams <= 0 || !Number.isFinite(scale) || selectedLibraryFormula().ingredients.some(item => !Number.isFinite(item.grams * scale))){
+    lm.textContent = '请输入有效且大于 0 的目标重量。'; lt.setAttribute('aria-invalid', 'true'); lt.focus(); return;
+  }
+  lt.removeAttribute('aria-invalid'); libraryScale = scale; renderLibraryFormula();
+  lm.textContent = `已按 ${li.selectedOptions[0].textContent} 换算整份配方。`;
+}
+function resetLibraryFormula(){
+  libraryScale = 1; lt.value = ''; lt.removeAttribute('aria-invalid');
+  lm.textContent = '请输入目标重量开始计算。'; renderLibraryFormula();
+}
+function changeLibraryRecipe(){
+  const recipe = selectedLibraryFormula();
+  li.replaceChildren(...recipe.ingredients.map((item, index) => new Option(item.name, String(index))), new Option('配方总重量', 'total'));
+  resetLibraryFormula();
+}
+lr.replaceChildren(...libraryFormulas.map(recipe => new Option(recipe.name, recipe.id)));
+lr.addEventListener('change', changeLibraryRecipe);
+li.addEventListener('change', () => {
+  if (lt.value.trim()) calculateLibraryFormula(); else resetLibraryFormula();
+});
+lu.addEventListener('change', () => {
+  if (lt.value.trim()) calculateLibraryFormula(); else renderLibraryFormula();
+});
+lt.addEventListener('keydown', event => {if (event.key === 'Enter') calculateLibraryFormula();});
+document.getElementById('libraryCalculateBtn').addEventListener('click', calculateLibraryFormula);
+document.getElementById('libraryResetBtn').addEventListener('click', () => {li.selectedIndex = 0; lu.value = 'g'; resetLibraryFormula();});
+recipeCards.forEach((card, index) => {
+  const button = document.createElement('button'); button.type = 'button'; button.className = 'outline-btn'; button.textContent = '换算此配方 →';
+  button.setAttribute('aria-label', `换算 ${libraryFormulas[index].name}`);
+  button.addEventListener('click', () => {lr.value = String(index); changeLibraryRecipe(); showSection('calculator'); showCalculatorPage('library-calculator'); lr.focus();});
+  card.append(button);
+});
+changeLibraryRecipe();
