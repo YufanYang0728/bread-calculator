@@ -149,3 +149,58 @@ recipeCards.forEach((card, index) => {
   card.append(button);
 });
 changeLibraryRecipe();
+
+/* Product view displays formulas only, without calculator shortcuts. */
+const productRecipes = {
+  rabbit: {name: '小兔子 Rabbit', components: [
+    {label: '香草慕斯', recipe: 'Rabbit Vanilla Mousse'},
+    {label: '百香果啫喱', missing: '尚未提供百香果啫喱的材料与用量。'},
+    {label: '香草 Sponge', missing: '尚未提供香草 Sponge 的材料与用量。'}
+  ]},
+  bear: {name: '小熊 Bear', components: [
+    {label: '巧克力慕斯', recipe: 'Chocolate Mousse · Bear'},
+    {label: '草莓啫喱', recipe: 'Strawberry Jelly'},
+    {label: '巧克力 Sponge', recipe: 'Chocolate Sponge'}
+  ]},
+  pig: {name: '小猪 Pig', components: [
+    {label: '橘子慕斯', recipe: 'Pig Mousse'},
+    {label: '橘子果冻', recipe: 'Mandarin Jelly'},
+    {label: '香草 Sponge', missing: '尚未提供香草 Sponge 的材料与用量。'}
+  ]},
+  stump: {name: '小树桩 Tree Stump', components: [
+    {label: '巧克力', missing: '待确认是否使用小熊同款巧克力慕斯。'},
+    {label: 'Cherry Jelly', recipe: 'Cherry Jelly'}
+  ]}
+};
+const productSelect = document.getElementById('productRecipeSelect');
+const productGrid = document.getElementById('productRecipeGrid');
+function renderProductRecipes(){
+  const product = productRecipes[productSelect.value];
+  productGrid.hidden = !product;
+  document.getElementById('recipeGrid').hidden = Boolean(product);
+  document.querySelector('.library-tools').hidden = Boolean(product);
+  if (!product){
+    productGrid.replaceChildren();
+    document.getElementById('productRecipeSummary').textContent = '选择产品，集中查看所需的慕斯、啫喱和蛋糕配方。';
+    updateRecipeLibrary(); return;
+  }
+  emptyRecipeState.hidden = true;
+  document.getElementById('productRecipeSummary').textContent = `${product.name} · ${product.components.map(component => component.label).join(' + ')}`;
+  const cards = product.components.map(component => {
+    const source = recipeCards.find(card => card.querySelector('h2').textContent.trim() === component.recipe);
+    const card = document.createElement('article'); card.className = 'library-card';
+    const label = document.createElement('div'); label.className = 'product-component-label'; label.textContent = component.label; card.append(label);
+    if (source){
+      // Copy recipe content; exclude the library's calculator button.
+      for (const child of source.children){if (child.tagName !== 'BUTTON') card.append(child.cloneNode(true));}
+    } else {
+      const title = document.createElement('h2'); title.textContent = '配方待补充';
+      const note = document.createElement('p'); note.className = 'recipe-note'; note.textContent = component.missing;
+      card.append(title, note);
+    }
+    return card;
+  });
+  productGrid.replaceChildren(...cards);
+}
+productSelect.addEventListener('change', renderProductRecipes);
+renderProductRecipes();

@@ -303,3 +303,10 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
   margin:-2px 0 10px;padding:7px 10px;border-radius:10px;
   background:#f2eadf;color:var(--brand-dark);font-size:12px;font-weight:900
 }
+
+.product-tools{margin-bottom:20px}
+.product-tools label{display:block;margin-bottom:10px;font-weight:850}
+.product-tools select{width:100%;min-height:54px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text);font:inherit}
+.product-tools select:focus{outline:2px solid var(--brand);outline-offset:2px}
+#productRecipeGrid[hidden],#recipeGrid[hidden],.library-tools[hidden]{display:none}
+.product-component-label{margin-bottom:12px;color:var(--brand-dark);font-weight:850}
