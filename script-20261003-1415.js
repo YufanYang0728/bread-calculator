@@ -154,8 +154,8 @@ changeLibraryRecipe();
 const productRecipes = {
   rabbit: {name: '小兔子 Rabbit', components: [
     {label: '香草慕斯', recipe: 'Rabbit Vanilla Mousse'},
-    {label: '百香果啫喱', missing: '尚未提供百香果啫喱的材料与用量。'},
-    {label: '香草 Sponge', missing: '尚未提供香草 Sponge 的材料与用量。'}
+    {label: '百香果啫喱'},
+    {label: '香草 Sponge'}
   ]},
   bear: {name: '小熊 Bear', components: [
     {label: '巧克力慕斯', recipe: 'Chocolate Mousse · Bear'},
@@ -165,10 +165,10 @@ const productRecipes = {
   pig: {name: '小猪 Pig', components: [
     {label: '橘子慕斯', recipe: 'Pig Mousse'},
     {label: '橘子果冻', recipe: 'Mandarin Jelly'},
-    {label: '香草 Sponge', missing: '尚未提供香草 Sponge 的材料与用量。'}
+    {label: '香草 Sponge'}
   ]},
   stump: {name: '小树桩 Tree Stump', components: [
-    {label: '巧克力', missing: '待确认是否使用小熊同款巧克力慕斯。'},
+    {label: '巧克力慕斯', recipe: 'Chocolate Mousse · Bear'},
     {label: 'Cherry Jelly', recipe: 'Cherry Jelly'}
   ]}
 };
@@ -194,9 +194,10 @@ function renderProductRecipes(){
       // Copy recipe content; exclude the library's calculator button.
       for (const child of source.children){if (child.tagName !== 'BUTTON') card.append(child.cloneNode(true));}
     } else {
-      const title = document.createElement('h2'); title.textContent = '配方待补充';
-      const note = document.createElement('p'); note.className = 'recipe-note'; note.textContent = component.missing;
-      card.append(title, note);
+      // Components without quantities are shown as name-only entries.
+      label.remove();
+      const title = document.createElement('h2'); title.textContent = component.label;
+      card.append(title);
     }
     return card;
   });
